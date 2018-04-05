@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JBApp</string>
+    <string-array name="Category">
+        <item>Samochody</item>
+        <item>Motocykle</item>
+        <item>Domy</item>
+    </string-array>
+    <string-array name="subCategory">
+    <item>Honda</item>
+    <item>Suzuki</item>
+    <item>Kawasaki</item>
+</string-array>
+</resources>
