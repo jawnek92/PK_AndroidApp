@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
+import org.w3c.dom.Document;
+
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
