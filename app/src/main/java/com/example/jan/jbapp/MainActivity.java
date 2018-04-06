@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
+import org.w3c.dom.Document;
+
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +40,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
     Player Tim = new Player();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +55,6 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         Category.add("/motoryzacja/samochody/");
         Category.add("/nieruchomosci/domy/");
         Category.add("/motoryzacja/motocykle-skutery/");
-        System.out.println("halo ");
-        System.out.println("Hhsubusdfklasjf lfuba przez gita.");
-
-
 
 
 
