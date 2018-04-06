@@ -40,9 +40,11 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
     private String urlWeb = "https://www.olx.pl/";
     private String userChoice;
 
-    TextView textView;
-    Player Tim = new Player();
-
+    String Samochody;
+    String Dom;
+    String Motocykle;
+    List<String> subCategoryCars;
+    List<String> subCategoryHouse;
 
     public class GetData extends AsyncTask<Void, Void, Void>{
 
@@ -79,10 +81,29 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         OpenURL = (Button)findViewById(R.id.OpenURL);
 
         List<String> Category = new ArrayList<>();
+        subCategoryCars = new ArrayList<>();
+        subCategoryHouse = new ArrayList<>();
+        List<String> subCategoryMotocykle = new ArrayList<>();
 
-        Category.add("/motoryzacja/samochody/");
-        Category.add("/nieruchomosci/domy/");
-        Category.add("/motoryzacja/motocykle-skutery/");
+
+        Samochody = "/motoryzacja/samochody/";
+        Dom = "/nieruchomosci/domy/";
+        Motocykle = "/motoryzacja/motocykle-skutery/";
+
+
+
+        Category.add(Samochody);
+        Category.add(Dom);
+        Category.add(Motocykle);
+
+        subCategoryCars.add("Honda");
+        subCategoryCars.add("Merc");
+        subCategoryCars.add("BMW");
+
+        subCategoryHouse.add("Jednorodzinne ");
+        subCategoryHouse.add("wielosoobowe");
+        subCategoryHouse.add("bloki");
+
 
         //Wczytywanie strony - narazie calej strony w formie stringu
         textView = (TextView)findViewById(R.id.textView2);
@@ -110,6 +131,8 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
 
         String item = adapterView.getItemAtPosition(i).toString();
 
+        setSubSpinner(item);
+
         intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlWeb + item));
 
         Toast.makeText(adapterView.getContext(),"Selected " + item, Toast.LENGTH_LONG).show();
@@ -124,5 +147,20 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+    }
+
+    void setSubSpinner(String item)
+    {
+        if(item == Samochody)
+        {
+            ArrayAdapter<String > dataAdapterSubCars = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, subCategoryCars);
+            subCategory.setAdapter(dataAdapterSubCars);
+
+
+        }else if(item == Dom )
+        {
+            ArrayAdapter<String > dataAdapterSubHouse = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, subCategoryHouse);
+            subCategory.setAdapter(dataAdapterSubHouse);
+        }
     }
 }
