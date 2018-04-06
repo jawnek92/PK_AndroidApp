@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         Category.add("/nieruchomosci/domy/");
         Category.add("/motoryzacja/motocykle-skutery/");
         System.out.println("halo ");
-        System.out.println("Hallo janek tu kuba przez gita.");
+        System.out.println("Hhsubusdfklasjf lfuba przez gita.");
 
 
 
