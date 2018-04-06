@@ -52,6 +52,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         Category.add("/motoryzacja/samochody/");
         Category.add("/nieruchomosci/domy/");
         Category.add("/motoryzacja/motocykle-skutery/");
+        System.out.println("halo ");
 
 
 
