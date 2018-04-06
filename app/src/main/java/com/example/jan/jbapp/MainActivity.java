@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.icu.util.ULocale;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,8 +17,10 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
-import org.w3c.dom.Document;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
+import java.io.IOException;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +40,34 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
     private String urlWeb = "https://www.olx.pl/";
     private String userChoice;
 
+    TextView textView;
     Player Tim = new Player();
 
 
+    public class GetData extends AsyncTask<Void, Void, Void>{
+
+        String data;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                Document document = Jsoup.connect(urlWeb).get();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            textView.setText(data);
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +84,9 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         Category.add("/nieruchomosci/domy/");
         Category.add("/motoryzacja/motocykle-skutery/");
 
+        //Wczytywanie strony - narazie calej strony w formie stringu
+        textView = (TextView)findViewById(R.id.textView2);
+        new GetData().execute();
 
 
 
