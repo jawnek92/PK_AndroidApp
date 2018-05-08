@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -80,6 +82,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         GlobalCategory = (Spinner) findViewById(R.id.Category_array);
         subCategory = (Spinner) findViewById(R.id.subCategory);
         OpenURL = (Button)findViewById(R.id.OpenURL);
+        UserSearch = (EditText)findViewById(R.id.editText);
 
         List<String> Category = new ArrayList<>();
 
@@ -126,12 +129,41 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         GlobalCategory.setAdapter(fromResource);
         GlobalCategory.setOnItemSelectedListener(this);
 
+
+
         OpenURL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(intent);
             }
         });
+
+        //Zgarnia info o tym czy cos zostalo wpisane w okienko EditText.
+        UserSearch.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+
+
+        });
+
+        Editable e = UserSearch.getText();
+        
+
+
+
 
     }
 
@@ -164,6 +196,8 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         {
             ArrayAdapter<String > dataAdapterSubCars = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, subCategoryCars);
             subCategory.setAdapter(dataAdapterSubCars);
+            Editable e = UserSearch.getText();
+            System.out.print(e.toString());
 
 
         }else if(item.equals("Dom") )
