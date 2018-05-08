@@ -18,10 +18,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.034" />/>
+        app:layout_constraintVertical_bias="0.034" />
 
     <Spinner
-        android:id="@+id/Category"
+        android:id="@+id/Category_array"
         android:layout_width="196dp"
         android:layout_height="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,18 +29,21 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241" />/>
+        app:layout_constraintVertical_bias="0.133"
+
+        />/>
 
     <Spinner
         android:id="@+id/subCategory"
-        android:layout_width="191dp"
+        android:layout_width="194dp"
         android:layout_height="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434" />/>
+        app:layout_constraintVertical_bias="0.235"
+        />
 
     <TextView
         android:id="@+id/textView2"

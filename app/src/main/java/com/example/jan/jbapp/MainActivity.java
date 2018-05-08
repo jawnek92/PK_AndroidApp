@@ -45,6 +45,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
     String Motocykle;
     List<String> subCategoryCars;
     List<String> subCategoryHouse;
+    List<String> subCategoryMotocykle;
 
     public class GetData extends AsyncTask<Void, Void, Void>{
 
@@ -66,7 +67,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            textView.setText(data);
+            //textView.setText(data);
 
         }
     }
@@ -76,14 +77,16 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GlobalCategory = (Spinner) findViewById(R.id.Category);
+        GlobalCategory = (Spinner) findViewById(R.id.Category_array);
         subCategory = (Spinner) findViewById(R.id.subCategory);
         OpenURL = (Button)findViewById(R.id.OpenURL);
 
         List<String> Category = new ArrayList<>();
+
         subCategoryCars = new ArrayList<>();
         subCategoryHouse = new ArrayList<>();
-        List<String> subCategoryMotocykle = new ArrayList<>();
+
+        subCategoryMotocykle = new ArrayList<>();
 
 
         Samochody = "/motoryzacja/samochody/";
@@ -104,17 +107,23 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         subCategoryHouse.add("wielosoobowe");
         subCategoryHouse.add("bloki");
 
+        subCategoryMotocykle.add("KTM");
+        subCategoryMotocykle.add("Suzuki");
+        subCategoryMotocykle.add("Komar");
+
 
         //Wczytywanie strony - narazie calej strony w formie stringu
-        textView = (TextView)findViewById(R.id.textView2);
+        //textView = (TextView)findViewById(R.id.textView2);
         new GetData().execute();
 
 
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Category);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,Category);
+
+        ArrayAdapter<CharSequence> fromResource = dataAdapter.createFromResource(this, R.array.Category_array, android.R.layout.simple_spinner_dropdown_item);
 
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        GlobalCategory.setAdapter(dataAdapter);
+        GlobalCategory.setAdapter(fromResource);
         GlobalCategory.setOnItemSelectedListener(this);
 
         OpenURL.setOnClickListener(new View.OnClickListener() {
@@ -151,15 +160,20 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
 
     void setSubSpinner(String item)
     {
-        if(item == Samochody)
+        if(item.equals("Samochody"))
         {
             ArrayAdapter<String > dataAdapterSubCars = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, subCategoryCars);
             subCategory.setAdapter(dataAdapterSubCars);
 
 
-        }else if(item == Dom )
+        }else if(item.equals("Dom") )
         {
             ArrayAdapter<String > dataAdapterSubHouse = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, subCategoryHouse);
+            subCategory.setAdapter(dataAdapterSubHouse);
+
+        }else if(item.equals("Motocykle"))
+        {
+            ArrayAdapter<String > dataAdapterSubHouse = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, subCategoryMotocykle);
             subCategory.setAdapter(dataAdapterSubHouse);
         }
     }
