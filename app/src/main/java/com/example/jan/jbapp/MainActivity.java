@@ -160,7 +160,7 @@ public class MainActivity extends Activity implements OnItemSelectedListener, Ad
         });
 
         Editable e = UserSearch.getText();
-        
+
 
 
 
